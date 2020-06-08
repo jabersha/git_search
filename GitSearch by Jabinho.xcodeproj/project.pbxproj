@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1503E894248CDB1D001C4265 /* WebServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503E893248CDB1D001C4265 /* WebServiceTest.swift */; };
+		1503E896248E53C2001C4265 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503E895248E53C1001C4265 /* AppUserDefaults.swift */; };
 		15269CCE248624FB00988FBC /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15269CCD248624FB00988FBC /* WebService.swift */; };
 		15C1623F2486062600C2F514 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C1623E2486062600C2F514 /* AppDelegate.swift */; };
 		15C162412486062600C2F514 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C162402486062600C2F514 /* SceneDelegate.swift */; };
@@ -35,8 +36,9 @@
 		1503E887248CD856001C4265 /* GitSearch by JabinhoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitSearch by JabinhoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1503E88B248CD856001C4265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1503E893248CDB1D001C4265 /* WebServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceTest.swift; sourceTree = "<group>"; };
+		1503E895248E53C1001C4265 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		15269CCD248624FB00988FBC /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
-		15C1623B2486062600C2F514 /* GitSearch by Jabinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitSearch by Jabinho.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15C1623B2486062600C2F514 /* GitSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C1623E2486062600C2F514 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15C162402486062600C2F514 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		15C162432486062600C2F514 /* GitSearch_by_Jabinho.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitSearch_by_Jabinho.xcdatamodel; sourceTree = "<group>"; };
@@ -89,7 +91,7 @@
 		15C1623C2486062600C2F514 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				15C1623B2486062600C2F514 /* GitSearch by Jabinho.app */,
+				15C1623B2486062600C2F514 /* GitSearch.app */,
 				1503E887248CD856001C4265 /* GitSearch by JabinhoTests.xctest */,
 			);
 			name = Products;
@@ -110,6 +112,7 @@
 				15C1626124860D4E00C2F514 /* RepoCell.swift */,
 				15C1626324860E4600C2F514 /* Repo.swift */,
 				15269CCD248624FB00988FBC /* WebService.swift */,
+				1503E895248E53C1001C4265 /* AppUserDefaults.swift */,
 			);
 			path = "GitSearch by Jabinho";
 			sourceTree = "<group>";
@@ -157,7 +160,7 @@
 			);
 			name = "GitSearch by Jabinho";
 			productName = "GitSearch by Jabinho";
-			productReference = 15C1623B2486062600C2F514 /* GitSearch by Jabinho.app */;
+			productReference = 15C1623B2486062600C2F514 /* GitSearch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1503E896248E53C2001C4265 /* AppUserDefaults.swift in Sources */,
 				15C1626424860E4600C2F514 /* Repo.swift in Sources */,
 				15C1625C24860A9E00C2F514 /* MasterViewController.swift in Sources */,
 				15269CCE248624FB00988FBC /* WebService.swift in Sources */,
@@ -432,7 +436,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jabinho.GitSearch-by-Jabinho";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GitSearch;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -452,7 +456,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jabinho.GitSearch-by-Jabinho";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GitSearch;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -26,6 +26,8 @@ class WebService {
     deleteAllRecords()
         
         guard let listUrl = url  else {return}
+
+        
         URLSession.shared.dataTask(with: listUrl) { (data, urlResponse, error) in
             guard let data = data, error == nil, urlResponse != nil else {
                 print("Error")
@@ -45,7 +47,6 @@ class WebService {
             }
             
             }
-            
         .resume()
     }
     
@@ -81,7 +82,6 @@ class WebService {
                     print("Erro ao salvar")
                 }
             }
-        
     
     }
         

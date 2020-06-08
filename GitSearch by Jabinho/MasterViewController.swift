@@ -21,52 +21,59 @@ class MasterViewController:UIViewController, UITableViewDataSource, UITableViewD
     var fetchingMore = false
     let monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "Monitor")
-
     
-//    lazy var refresh : UIRefreshControl = {
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.tintColor = .gray
-//        refreshControl.addTarget(self, action: #selector(resquestData), for: .valueChanged)
-//        return refreshControl
-//    }()
+    lazy var refresh : UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .gray
+        refreshControl.addTarget(self, action: #selector(resquestData), for: .valueChanged)
+        return refreshControl
+    }()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         monitor.start(queue: queue)
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
                 self.webService.getJson()
-//                self.getData()
-            } else {
+            }else{
                 self.showOfflineAlert()
             }
-            
+        }
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        if !UserDefaults.standard.bool(forKey: Keys.firstAcess){
+            sleep(3)
+            UserDefaults.standard.set(true, forKey: Keys.firstAcess)
+
         }
         getData()
-//        tableView.refreshControl = refresh
-        self.tableView.reloadData()
+        print("DidLoad \(self.items.count)")
+        tableView.refreshControl = refresh
         }
-//    
-//    override func viewDidAppear(_ animated: Bool) {
-//        tableView.reloadData()
-//    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
 //
-//    override func viewWillAppear(_ animated: Bool) {
-//        webService.getJson()
-//    }
     
-//    @objc
-//    func resquestData(){
-//        webService.getJson()
-//        getData()
-//        self.tableView.reloadData()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 , execute: {self.refresh.endRefreshing()})
-//        fetchingMore = false
-//
-//    }
+    @objc
+    func resquestData(){
+        monitor.pathUpdateHandler = { path in
+            if path.status == .unsatisfied {
+                self.webService.getJson()
+                self.getData()
+                
+            }else{
+                self.showOfflineAlert()
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0 , execute: {self.refresh.endRefreshing()})
+        fetchingMore = false
+        self.tableView.reloadData()
+
+
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if items.count > 0 && !fetchingMore{
@@ -87,6 +94,13 @@ class MasterViewController:UIViewController, UITableViewDataSource, UITableViewD
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let urlString = items[indexPath.row].html_url
+        
+        if let url = URL(string: urlString){
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -131,6 +145,7 @@ class MasterViewController:UIViewController, UITableViewDataSource, UITableViewD
                  }
              }
          }
+        
     
 
 }
